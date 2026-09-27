@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: cinema_db_test
+    environment:
+      POSTGRES_DB: cinema_booking
+      POSTGRES_USER: qa_tester
+      POSTGRES_PASSWORD: secretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./database/02_seed_data.sql:/docker-entrypoint-initdb.d/02_seed_data.sql
