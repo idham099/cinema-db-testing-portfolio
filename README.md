@@ -2,7 +2,7 @@
 
 **Project:** Cinema Booking System  
 **Environment:** Local PostgreSQL Container (Docker)  
-**Executed By:** Automated Pytest Suite  
+**Executed By:** Automated Pytest Suite to Covers Data Integrity, Financial Reconciliation, and Race Condition Tests.
 
 ---
 
