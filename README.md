@@ -4,7 +4,6 @@
 ![Pytest](https://img.shields.io/badge/Pytest-Testing-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![DBeaver](https://img.shields.io/badge/DBeaver-Database_Tool-382923?style=for-the-badge&logo=dbeaver&logoColor=white)
-![YouTube](https://img.shields.io/badge/YouTube-Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
 
 ---
 
