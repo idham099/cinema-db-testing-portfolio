@@ -24,6 +24,96 @@ Here's the demo link: 👉 **[Demo Testing](https://youtu.be/uzTyumILce8)**
 <img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/59dd7b3c-a446-40d3-8117-422b07cfff09" />
 <img width="1535" height="862" alt="image" src="https://github.com/user-attachments/assets/d598c33a-720d-49bd-a997-a801c9380cd2" />
 
+## 🛠️ How to Run Locally
+
+Follow these instructions to set up the environment and run the automated database testing suite on your local machine.
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+* **Docker & Docker Compose** (Desktop or CLI)
+* **Python 3.10+**
+* **Git**
+* *(Optional)* **DBeaver** or any database GUI client for visual inspection
+
+---
+
+### Getting Started
+
+#### 1. Clone the Repository
+```bash
+git clone [https://github.com/idham099/cinema-db-testing-portfolio.git](https://github.com/idham099/cinema-db-testing-portfolio.git)
+cd cinema-db-testing-portfolio
+```
+
+##### 2. Set Up Virtual Environment & Dependencies
+It is recommended to use a Python virtual environment:
+```
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+#### 3. Start the PostgreSQL Container
+Spin up the isolated PostgreSQL database instance using Docker Compose:
+```
+docker-compose up -d
+```
+This will initialize the database container and automatically run the schema migration and initial seed data scripts.
+
+#### 4. Verify Database Connection (Optional)
+You can verify that the container is running with:
+```
+docker ps
+```
+* Host: localhost
+* Port: 5432 (or your configured port)
+* Database Name: cinema_db
+* User/Password: postgres / postgres (adjust according to your .env / docker-compose setup)
+
+---
+
+🧪 Executing the Test Suite
+Run all automated test cases using pytest:
+```
+# Run all database test cases
+pytest
+
+# Run tests with detailed console log output
+pytest -v -s
+
+# Run specific test modules (e.g., Financial Reconciliation)
+pytest tests/test_reconciliation.py
+
+# Run concurrency / race condition tests only
+pytest tests/test_concurrency.py
+```
+
+---
+
+#### Generating Test Reports
+To generate an HTML test execution report:
+```
+pytest --html=report.html --self-contained-html
+```
+
+---
+
+#### 🧹 Cleanup
+To stop and remove the Docker container and reset the database state:
+```
+docker-compose down -v
+```
+
+---
 
 ## Bug Summary
 
