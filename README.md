@@ -1,4 +1,12 @@
 # 🐛 Database Anomaly & Bug Execution Report
+![Python](https://img.shields.io/badge/Python-312-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-Testing-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![DBeaver](https://img.shields.io/badge/DBeaver-Database_Tool-382923?style=for-the-badge&logo=dbeaver&logoColor=white)
+![YouTube](https://img.shields.io/badge/YouTube-Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
+
+---
 
 **Project:** Cinema Booking System  
 **Environment:** Local PostgreSQL Container (Docker)  
