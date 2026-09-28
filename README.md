@@ -24,6 +24,40 @@ Here's the demo link: 👉 **[Demo Testing](https://youtu.be/uzTyumILce8)**
 <img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/59dd7b3c-a446-40d3-8117-422b07cfff09" />
 <img width="1535" height="862" alt="image" src="https://github.com/user-attachments/assets/d598c33a-720d-49bd-a997-a801c9380cd2" />
 
+## Bug Summary
+
+| Bug ID | Test Case | Severity | Status | Summary |
+| :--- | :--- | :--- | :--- | :--- |
+| **BUG-01** | `test_reconciliation.py` | **CRITICAL** | OPEN | Discrepancy between `recorded_amount` and calculated total price in `bookings` table. |
+
+---
+
+## Detailed Findings
+
+### BUG-01: Financial Discrepancy in Transaction Bookings
+
+* **Description:**  
+  Found mismatched financial records where `total_amount` in the `bookings` table does not match the actual calculation (`total_seats * ticket_price`).
+  
+* **Automated Test Output:**
+  ```text
+  AssertionError: DITEMUKAN BUG FINANSIAL! 
+  Detail: [
+    (2, Decimal('80000.00'), Decimal('100000.00'), Decimal('-20000.00')), 
+    (4, Decimal('50000.00'), Decimal('500000.00'), Decimal('-450000.00'))
+  ]
+  ```
+
+* **Impact:**  
+  * **Booking ID 2:** Undercharged by **Rp 20,000** (Revenue Loss).
+  * **Booking ID 4:** Undercharged by **Rp 450,000** (Revenue Loss).
+
+* **Recommendation for Backend Engineer:**
+  1. Implement a database `TRIGGER` or update the API endpoint logic to calculate `total_amount` strictly on the backend server before executing `INSERT INTO bookings`.
+  2. Avoid trusting client-side payload for `total_amount`.
+
+---
+
 ## 🛠️ How to Run Locally
 
 Follow these instructions to set up the environment and run the automated database testing suite on your local machine.
@@ -112,40 +146,6 @@ To stop and remove the Docker container and reset the database state:
 ```
 docker-compose down -v
 ```
-
----
-
-## Bug Summary
-
-| Bug ID | Test Case | Severity | Status | Summary |
-| :--- | :--- | :--- | :--- | :--- |
-| **BUG-01** | `test_reconciliation.py` | **CRITICAL** | OPEN | Discrepancy between `recorded_amount` and calculated total price in `bookings` table. |
-
----
-
-## Detailed Findings
-
-### BUG-01: Financial Discrepancy in Transaction Bookings
-
-* **Description:**  
-  Found mismatched financial records where `total_amount` in the `bookings` table does not match the actual calculation (`total_seats * ticket_price`).
-  
-* **Automated Test Output:**
-  ```text
-  AssertionError: DITEMUKAN BUG FINANSIAL! 
-  Detail: [
-    (2, Decimal('80000.00'), Decimal('100000.00'), Decimal('-20000.00')), 
-    (4, Decimal('50000.00'), Decimal('500000.00'), Decimal('-450000.00'))
-  ]
-  ```
-
-* **Impact:**  
-  * **Booking ID 2:** Undercharged by **Rp 20,000** (Revenue Loss).
-  * **Booking ID 4:** Undercharged by **Rp 450,000** (Revenue Loss).
-
-* **Recommendation for Backend Engineer:**
-  1. Implement a database `TRIGGER` or update the API endpoint logic to calculate `total_amount` strictly on the backend server before executing `INSERT INTO bookings`.
-  2. Avoid trusting client-side payload for `total_amount`.
 
 ---
 Created by Ainul idham
